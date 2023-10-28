@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .listS {
+        font-size: 40px;
+        font-weight: bolder;
+        font-family: fantasy;
+        color: #169;
+    }
+
+    .listS_2 {
+        font-size: 49px;
+        font-weight: bolder;
+        font-family: monospace;
+        color: #862;
+        width: 40%;
+        height: 100%;
+        background-color: lavender;
+        rotate: 10deg;
+        transition:
+            width .3s,
+            height .3s,
+            background-color 2s,
+            rotate 2s;
+    }
+
+    .Btn {
+        background-color: black;
+        border: 1px solid white;
+        font-size: 19px;
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding: 14px;
+    }
+
+    .Btn:hover {
+        background-color: white;
+        border: 1px solid black;
+        font-size: 19px;
+        color: black;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        transform: scale(1.1);
+        rotate: 4deg;
+        transition:
+            width .3s,
+            height .3s,
+            background-color 2s,
+            transform 2s ease-out;
+    }
+
+    .SBtn {
+        background-color: white;
+        border: 1px solid black;
+        font-size: 17px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: 400 !important;
+        padding: 14px;
+        margin-left: 30px;
+    }
+
+    .SBtn:hover {
+        background-color: rgba(120, 135, 246, 0.644);
+        border: 1px solid white;
+        font-size: 17px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: 400 !important;
+        padding: 14px;
+        transform: scale(.3);
+        transition:
+            width .3s,
+            height .3s,
+            background-color 2s,
+            transform 2s ease-in-out;
+    }
+</style>
+
+<body>
+    <h1 id="demo2"></h1>
+    <h1 id="demo3"></h1>
+    <h1 id="H1_Style">ADD ClassList Style Using Button Click</h1>
+    <button onclick="ApplyS()">click Me</button>
+    <button onclick="RemoveS()">Remove Style</button>
+    <button onmouseover="ToggleS()">Toogle Style</button>
+    <h1 id="H1_Style2">Toggle Style using Button Style</h1>
+    <button class="Btn">Toogle Style</button>
+    <button onclick="CreateBtn()">Toogle Style</button>
+    <button onclick="TimeOut()">TimeOut</button>
+    <div class="element">
+        <p id="child">Insert Button </p>
+    </div>
+    <select name="" id="" onchange="alert('you change the subject')">
+        <option value="">Enlish</option>
+        <option value="">Urdr</option>
+        <option value="">Math </option>
+        <option value="">Phy</option>
+    </select>
+    <div class="parent">
+        <h1 class="loop"></h1>
+        <h1 class="loop2"></h1>
+    </div>
+    <button onclick="myStopFunction()">Stop Time</button>
+    <p id="demo"></p>
+    <script>
+        function setin() {
+            document.querySelector('#demo2').innerHTML = 'StartNOW For Joks.......'
+        }
+        const setin2 = setInterval(setin, 2000)
+        setTimeout(() => {
+            clearInterval(setin2);
+            document.querySelector('#demo2').innerHTML = 'No more jokes for now!'
+        }, 10000);
+        // // setinterval
+        function tellJoke() {
+            console.log("Why don't scientists trust atoms? Because they make up everything!");
+        }
+        const jokeInterval = setInterval(tellJoke, 2000);
+
+        // After 10 seconds, stop telling jokes
+        setTimeout(() => {
+            clearInterval(jokeInterval);
+            console.log("No more jokes for now!");
+        }, 10000);
+        // setinterval
+        const myinterval = setInterval(mytimer, 1000)
+        function mytimer() {
+            const date = new Date();
+            document.querySelector('#demo').innerHTML = date.toLocaleTimeString();
+        }
+        function myStopFunction(params) {
+            clearInterval(myinterval)
+        }
+        // Javascript setinterval & clearinterval
+        function init2() {
+            let loop2 = document.querySelector('.loop2')
+            let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            let g = 0
+            function run2() {
+                loop2.innerHTML += arr[g++] + '' + 'hello' + '' + '<br>'
+                if (g < arr.length)
+                    setTimeout(run2, 1000)
+            }
+            setTimeout(run2, 1000)
+        } init2()
+
+        // 
+
+
+        function init() {
+            var textScroller = document.querySelector('.loop')
+            var text = 'Hello how are you?';
+            var c = 0;
+            function run() {
+                textScroller.innerHTML += text[c++];
+                if (c < text.length)
+                    setTimeout(run, 1000);
+            }
+            setTimeout(run, 1000);
+        }
+        init()
+
+
+
+        function ApplyS() {
+            let list = document.querySelector("#H1_Style").classList
+            // list.add('listS')
+            list.add('listS')
+        }
+        function RemoveS() {
+            let list = document.querySelector("#H1_Style").classList
+            // list.add('listS')
+            list.remove('listS')
+        }
+        function ToggleS() {
+            let list_g2 = document.querySelector("#H1_Style2").classList.toggle('listS_2')
+            // list.add('listS')
+            // list.remove('listS')
+        }
+        // Javascript create elements method
+        function CreateBtn() {
+            let element = document.querySelector('.element')
+            let button = document.createElement('button')
+            button.classList.add('SBtn')
+
+            // button.add('Btn')
+            button.innerHTML = 'Once hover Me'
+            let child = document.querySelector('#child')
+            element.insertBefore(button, child);
+        }
+
+    </script>
+</body>
+
+</html>
